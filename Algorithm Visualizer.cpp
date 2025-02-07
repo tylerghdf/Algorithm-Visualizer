@@ -140,6 +140,11 @@ void SelectionSort(int targetArray[], int targetArraySize)
 	}
 }
 
+
+//@brief Sort a given array using the insertion sort algorithm.
+//
+//@param targetArray: The integer array to be sorted.
+//@param targetArraySize: The size of the given integer array.
 void InsertionSort(int targetArray[], int targetArraySize)
 {
 	const int sleepTime = 1000;
@@ -156,18 +161,30 @@ void InsertionSort(int targetArray[], int targetArraySize)
 
 		DisplayArray(targetArray, targetArraySize, activeElement);
 
-		sleep_for(seconds(sleepTime));
+		sleep_for(milliseconds(sleepTime));
 
 		while (j >= 0 && targetArray[j] > temp)
 		{
+			activeElement = j + 1;
+			selectedElement = j;
+
+			DisplayArray(targetArray, targetArraySize, activeElement, selectedElement);
+
+			sleep_for(milliseconds(sleepTime));
+
 			targetArray[j + 1] = targetArray[j];
 			targetArray[j] = temp;
+
+			activeElement = j;
+			selectedElement = j + 1;
+
+			DisplayArray(targetArray, targetArraySize, activeElement, selectedElement);
+
+			sleep_for(milliseconds(sleepTime));
 
 			j--;
 		}
 	}
-
-	DisplayArray(targetArray, targetArraySize);
 }
 
 int main()
