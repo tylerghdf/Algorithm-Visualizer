@@ -1,3 +1,3 @@
 #pragma once
 
-void DisplayIntArray(int targetArray[], int targetArraySize, int activeElement = -1, int selectedElement = -1);
+void DisplayIntArray(int targetArray[], int targetArraySize, int activeElements[2] = nullptr, int selectedElements[2] = nullptr);

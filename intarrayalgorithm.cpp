@@ -15,24 +15,24 @@ void BubbleSort(int targetArray[], int targetArraySize)
 {
 	const int sleepTime = 300;
 
-	int activeElement;
-	int selectedElement;
+	int activeElements[2];
+	int selectedElements[2];
 
 	for (int i = 0; i < targetArraySize - 1; i++)
 	{
 		for (int j = 0; j < targetArraySize - i - 2; j++)
 		{
-			activeElement = j;
+			activeElements[0] = j;
 
-			DisplayIntArray(targetArray, targetArraySize, activeElement);
+			DisplayIntArray(targetArray, targetArraySize, activeElements);
 
 			sleep_for(milliseconds(sleepTime));
 
 			if (targetArray[j] > targetArray[j + 1])
 			{
-				selectedElement = j + 1;
+				selectedElements[0] = j + 1;
 
-				DisplayIntArray(targetArray, targetArraySize, activeElement, selectedElement);
+				DisplayIntArray(targetArray, targetArraySize, activeElements, selectedElements);
 
 				sleep_for(milliseconds(sleepTime));
 
@@ -41,10 +41,10 @@ void BubbleSort(int targetArray[], int targetArraySize)
 				targetArray[j + 1] = temp;
 			}
 
-			activeElement = j + 1;
-			selectedElement = j;
+			activeElements[0] = j + 1;
+			selectedElements[0] = j;
 
-			DisplayIntArray(targetArray, targetArraySize, activeElement, selectedElement);
+			DisplayIntArray(targetArray, targetArraySize, activeElements, selectedElements);
 
 			sleep_for(milliseconds(sleepTime));
 		}
@@ -60,8 +60,8 @@ void SelectionSort(int targetArray[], int targetArraySize)
 {
 	const int sleepTime = 750;
 
-	int activeElement;
-	int selectedElement;
+	int activeElements[2];
+	int selectedElements[2];
 
 	for (int i = 0; i < targetArraySize; i++)
 	{
@@ -69,10 +69,10 @@ void SelectionSort(int targetArray[], int targetArraySize)
 
 		for (int j = 0 + i; j < targetArraySize; j++)
 		{
-			activeElement = j;
-			selectedElement = min;
+			activeElements[0] = j;
+			selectedElements[0] = min;
 
-			DisplayIntArray(targetArray, targetArraySize, activeElement, selectedElement);
+			DisplayIntArray(targetArray, targetArraySize, activeElements, selectedElements);
 
 			sleep_for(milliseconds(sleepTime));
 
@@ -80,7 +80,7 @@ void SelectionSort(int targetArray[], int targetArraySize)
 			{
 				min = j;
 
-				DisplayIntArray(targetArray, targetArraySize, activeElement, selectedElement);
+				DisplayIntArray(targetArray, targetArraySize, activeElements, selectedElements);
 			}
 		}
 
@@ -88,9 +88,9 @@ void SelectionSort(int targetArray[], int targetArraySize)
 		targetArray[i] = targetArray[min];
 		targetArray[min] = temp;
 
-		selectedElement = i;
+		selectedElements[0] = i;
 
-		DisplayIntArray(targetArray, targetArraySize, activeElement, selectedElement);
+		DisplayIntArray(targetArray, targetArraySize, activeElements, selectedElements);
 
 		sleep_for(milliseconds(sleepTime));
 	}
@@ -105,36 +105,36 @@ void InsertionSort(int targetArray[], int targetArraySize)
 {
 	const int sleepTime = 1000;
 
-	int activeElement;
-	int selectedElement;
+	int activeElements[2];
+	int selectedElements[2];
 
 	for (int i = 1; i < targetArraySize; i++)
 	{
 		int temp = targetArray[i];
 		int j = i - 1;
 
-		activeElement = i;
+		activeElements[0] = i;
 
-		DisplayIntArray(targetArray, targetArraySize, activeElement);
+		DisplayIntArray(targetArray, targetArraySize, activeElements);
 
 		sleep_for(milliseconds(sleepTime));
 
 		while (j >= 0 && targetArray[j] > temp)
 		{
-			activeElement = j + 1;
-			selectedElement = j;
+			activeElements[0] = j + 1;
+			selectedElements[0] = j;
 
-			DisplayIntArray(targetArray, targetArraySize, activeElement, selectedElement);
+			DisplayIntArray(targetArray, targetArraySize, activeElements, selectedElements);
 
 			sleep_for(milliseconds(sleepTime));
 
 			targetArray[j + 1] = targetArray[j];
 			targetArray[j] = temp;
 
-			activeElement = j;
-			selectedElement = j + 1;
+			activeElements[0] = j;
+			selectedElements[0] = j + 1;
 
-			DisplayIntArray(targetArray, targetArraySize, activeElement, selectedElement);
+			DisplayIntArray(targetArray, targetArraySize, activeElements, selectedElements);
 
 			sleep_for(milliseconds(sleepTime));
 

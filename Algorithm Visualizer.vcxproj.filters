@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Algorithm Visualizer.cpp" />
+    <ClCompile Include="intarrayalgorithm.cpp" />
+    <ClCompile Include="visualization.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="visualization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intarrayalgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e6da7d9e-8b42-4859-ad72-af987e785117}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
