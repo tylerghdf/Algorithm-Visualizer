@@ -129,6 +129,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algorithm Visualizer.cpp" />
+    <ClCompile Include="intarrayalgorithm.cpp" />
+    <ClCompile Include="visualization.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="intarrayalgorithm.h" />
+    <ClInclude Include="visualization.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
