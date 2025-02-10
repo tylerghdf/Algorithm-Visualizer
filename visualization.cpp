@@ -31,12 +31,13 @@ bool IntInArray(int targetArray[], int targetArraySize, int targetInt)
 	return false;
 }
 
-//@brief Writes given array to the console using self determined styling.
+
+//@brief Displays an integer array as a bar chart scaled to the highest value in console.
 //
-//@param targetArray: Integer array to be displayed
-//@param targetArraySize: Size of target array being passed
-//@param activeElements: Elements indexes that are being interacted with at the moment -- Yellow
-//@param selectedElements: Elements indexes that are being moved/changed at the moment -- Red
+//@param targetArray: The array you want to display.
+//@param targetArraySize: The size of the array you are trying to display.
+//@param activeElements: The elements currently being viewed at the current moment.
+//@param selectedElements: The elements that are being changed/moved at the current moment.
 void DisplayIntArray(int targetArray[], int targetArraySize, int activeElements[2], int selectedElements[2])
 {
 	const string RED = "\033[31m";
@@ -44,13 +45,68 @@ void DisplayIntArray(int targetArray[], int targetArraySize, int activeElements[
 	const string GREEN = "\033[32m";
 	const string WHITE = "\033[37m";
 
-	int len = targetArraySize;
+	const int height = 10;
+	float max = targetArray[0];
+
+
+	for (int i = 0; i < targetArraySize; i++)
+	{
+		if (targetArray[i] > max)
+		{
+			max = targetArray[i];
+		}
+	}
+
+	system("cls");
+
+	// displays the bar chart scaled to the highest value
+	for (int i = height; i > 0; i--)
+	{
+		for (int j = 0; j < targetArraySize; j++)
+		{
+			if (round(targetArray[j] / max * height) >= i)
+			{
+				if (IntInArray(selectedElements, 2, j))
+				{
+					cout << RED << "|" << WHITE;
+				}
+				else if (IntInArray(activeElements, 2 , j))
+				{
+					cout << YELLOW << "|" << WHITE;
+				} 
+				else
+				{
+					cout << "|";
+				}
+			}
+			else
+			{
+				cout << " ";
+			}
+		}
+
+		cout << "\n";
+	}
+}
+
+//@brief Simple function for displaying an integer array in console.
+//
+//@param targetArray: Integer array to be displayed
+//@param targetArraySize: Size of target array being passed
+//@param activeElements: Elements indexes that are being interacted with at the moment -- Yellow
+//@param selectedElements: Elements indexes that are being moved/changed at the moment -- Red
+void sDisplayIntArray(int targetArray[], int targetArraySize, int activeElements[2], int selectedElements[2])
+{
+	const string RED = "\033[31m";
+	const string YELLOW = "\033[33m";
+	const string GREEN = "\033[32m";
+	const string WHITE = "\033[37m";
 
 	system("cls");
 
 	cout << "[";
 
-	for (int i = 0; i < len; i++)
+	for (int i = 0; i < targetArraySize; i++)
 	{
 		// highlight active elements in yellow, selected elements in red
 		if (IntInArray(selectedElements, 2, i))
@@ -67,7 +123,7 @@ void DisplayIntArray(int targetArray[], int targetArraySize, int activeElements[
 		}
 
 		// prevent comma at end of array
-		if (i != len - 1)
+		if (i != targetArraySize - 1)
 		{
 			cout << ",";
 		}
